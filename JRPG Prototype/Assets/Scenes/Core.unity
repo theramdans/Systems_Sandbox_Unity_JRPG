@@ -443,7 +443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Klik Aku
+  m_text: Add 50 exp
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -670,23 +670,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64c66ff4da781a428efd811c6a37415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player:
+  CurrentPlayer:
     name: 
     level: 0
-    currentExp: 0
-    nextExp: 0
-    maxHP: 0
-    attack: 0
-    defense: 0
+    CurrentExp: 0
+    NextExp: 0
+    MaxHP: 0
+    CurrentHP: 0
+    BaseAttack: 0
+    BaseDefense: 0
   Growth:
-    Character:
+    CurrentPlayer:
       name: 
       level: 0
-      currentExp: 0
-      nextExp: 0
-      maxHP: 0
-      attack: 0
-      defense: 0
+      CurrentExp: 0
+      NextExp: 0
+      MaxHP: 0
+      CurrentHP: 0
+      BaseAttack: 0
+      BaseDefense: 0
   expButton: {fileID: 1568552760}
 --- !u!4 &1806701021
 Transform:

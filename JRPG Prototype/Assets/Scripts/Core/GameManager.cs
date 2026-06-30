@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private CharacterData Player;
-    [SerializeField] private CharacterGrowth Growth;
+    [SerializeField] private PlayerData CurrentPlayer;
+    [SerializeField] private PlayerGrowth Growth;
 
     public Button expButton;
 
@@ -18,18 +18,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = new CharacterData();
-        Player.name = "Mey";
-        Player.currentExp = 0;
-        Player.nextExp = 200;
+        CurrentPlayer = new PlayerData();
+        CurrentPlayer.name = "Mey";
+        CurrentPlayer.CurrentExp = 0;
+        CurrentPlayer.NextExp = 200;
 
-        Player.level = 1;
-        Player.maxHP = 100;
-        Player.attack = 5;
-        Player.defense = 5;
+        CurrentPlayer.level = 1;
+        CurrentPlayer.MaxHP = 100;
+        CurrentPlayer.BaseAttack = 5;
+        CurrentPlayer.BaseDefense = 5;
 
-        Growth = new CharacterGrowth();
-        Growth.Character = Player;
+        Growth = new PlayerGrowth();
+        Growth.CurrentPlayer = CurrentPlayer;
     }
 
     public void AddExp()
