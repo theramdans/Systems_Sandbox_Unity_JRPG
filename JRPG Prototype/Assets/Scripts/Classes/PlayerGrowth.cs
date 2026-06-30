@@ -6,18 +6,18 @@ using UnityEngine;
 
 public class PlayerGrowth
 {
-    public PlayerData CurrentPlayer;
+    public PlayerData player;
 
     public void GainExp(int value)
     {
-        CurrentPlayer.CurrentExp += value;
+        player.CurrentExp += value;
 
         CheckLevelUp();
     }
 
     public void CheckLevelUp()
     {
-        if (CurrentPlayer.CurrentExp >= CurrentPlayer.NextExp)
+        if (player.CurrentExp >= player.NextExp)
         {
             LevelUp();
         }
@@ -25,12 +25,12 @@ public class PlayerGrowth
 
     public void LevelUp()
     {
-        CurrentPlayer.MaxHP = Mathf.RoundToInt(CurrentPlayer.MaxHP * 1.1f);
-        CurrentPlayer.BaseAttack += 1;
-        CurrentPlayer.BaseDefense += 1;
+        player.MaxHP = Mathf.RoundToInt(player.MaxHP * 1.1f);
+        player.BaseAttack += 1;
+        player.BaseDefense += 1;
 
-        CurrentPlayer.NextExp += 200 + Mathf.RoundToInt(CurrentPlayer.level * 1.2f);
-        CurrentPlayer.level += 1;
+        player.NextExp += 200 + Mathf.RoundToInt(player.level * 1.2f);
+        player.level += 1;
     }
 
 }

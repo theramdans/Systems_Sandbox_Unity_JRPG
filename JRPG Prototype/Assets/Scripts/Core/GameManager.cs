@@ -29,7 +29,11 @@ public class GameManager : MonoBehaviour
         CurrentPlayer.BaseDefense = 5;
 
         Growth = new PlayerGrowth();
-        Growth.CurrentPlayer = CurrentPlayer;
+        Growth.player = CurrentPlayer;
+        //NEXT
+        //Create EquipmentData objects
+        //Assign those objects to player
+        //Call calculate final stats function in EquipmentSytems
     }
 
     public void AddExp()
