@@ -8,6 +8,24 @@ public class EquipmentSystems
 {
     public PlayerData player;
     public EquipmentData CurrentEquipment;
-    //NEXT
-    //Calculate final player stats (base value + boost - Don't modify the base value)
+
+    public void EquipWeapon(PlayerData player, EquipmentData weapon)
+    {
+        player.EquippedWeapon = weapon;
+    }
+
+    public void EquipArmor(PlayerData player, EquipmentData armor)
+    {
+        player.EquippedArmor = armor;
+    }
+
+    public int CalculateFinalAttack(PlayerData player)
+    {
+        return (player.BaseAttack + player.EquippedWeapon.AttackBoost + player.EquippedArmor.AttackBoost);
+    }
+
+    public int CalculateFinalDefense(PlayerData player)
+    {
+        return (player.BaseDefense + player.EquippedWeapon.DefenseBoost + player.EquippedArmor.DefenseBoost);
+    }
 }

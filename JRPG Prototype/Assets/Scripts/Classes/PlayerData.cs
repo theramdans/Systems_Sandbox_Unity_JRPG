@@ -16,5 +16,8 @@ public class PlayerData
     public int CurrentHP;
     public int BaseAttack;
     public int BaseDefense;
+
+    public EquipmentData EquippedWeapon;
+    public EquipmentData EquippedArmor;
 }
     
