@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class EquipmentSystems
 {
-    public PlayerData player;
-    public EquipmentData CurrentEquipment;
-
     public void EquipWeapon(PlayerData player, EquipmentData weapon)
     {
         player.EquippedWeapon = weapon;
