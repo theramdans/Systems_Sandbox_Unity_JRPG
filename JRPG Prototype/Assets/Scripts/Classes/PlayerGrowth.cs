@@ -6,31 +6,37 @@ using UnityEngine;
 
 public class PlayerGrowth
 {
-    public PlayerData player;
-
-    public void GainExp(int value)
+    public void GainExp(int value, PlayerData player)
     {
         player.CurrentExp += value;
 
-        CheckLevelUp();
+        CheckLevelUp(player);
     }
 
-    public void CheckLevelUp()
+    public void CheckLevelUp(PlayerData player)
     {
         if (player.CurrentExp >= player.NextExp)
         {
-            LevelUp();
+            LevelUp(player);
         }
     }
 
-    public void LevelUp()
+    public void LevelUp(PlayerData player)
     {
         player.MaxHP = Mathf.RoundToInt(player.MaxHP * 1.1f);
-        player.BaseAttack += 1;
-        player.BaseDefense += 1;
+
+        int attackIncrease = Random.Range(1, 4); //randomize to add some RNG
+        int defenseIncrease = Random.Range(1, 4);
+
+        player.BaseAttack += attackIncrease;
+        player.BaseDefense += defenseIncrease;
+        Debug.Log($"Attack increased by {attackIncrease}");
+        Debug.Log($"Defense increased by {defenseIncrease}");
 
         player.NextExp += 200 + Mathf.RoundToInt(player.level * 1.2f);
         player.level += 1;
-    }
 
+        Debug.Log($"{player.name} has leveled up to level {player.level}! Calculating new stats...");
+        GameManager.myGameManager.CalculateFinalStats(player);
+    }
 }
