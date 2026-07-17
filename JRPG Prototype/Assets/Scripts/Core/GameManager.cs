@@ -5,15 +5,30 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private PlayerData CurrentPlayer;
-    [SerializeField] private PlayerGrowth Growth;
+    public static GameManager myGameManager;
+
+    [SerializeField] private PlayerData CurrentPlayer; //use List<Players> for multiple party members in the future
+    [SerializeField] private List<EnemyData> enemies; //for now, use single enemy
+
     [SerializeField] private EquipmentSystems EquipmentSystem;
+    [SerializeField] private PlayerGrowth Growth;
 
     public Button expButton;
 
     private void Awake()
     {
-        expButton.onClick.AddListener(AddExp);
+        if (myGameManager == null)
+        {
+            myGameManager = this;
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+        Debug.Log(myGameManager);
+
+        expButton.onClick.AddListener(AddExp);    
     }
 
     // Start is called before the first frame update
@@ -31,7 +46,6 @@ public class GameManager : MonoBehaviour
         CurrentPlayer.BaseDefense = 5;
 
         Growth = new PlayerGrowth();
-        Growth.player = CurrentPlayer;
 
         EquipmentData busterSword = new EquipmentData()
         {
@@ -52,21 +66,27 @@ public class GameManager : MonoBehaviour
         EquipmentSystem.EquipWeapon(CurrentPlayer, busterSword);
         EquipmentSystem.EquipArmor(CurrentPlayer, ironBangle);
 
-        int finalAttack = EquipmentSystem.CalculateFinalAttack(CurrentPlayer);
-        int finalDefense = EquipmentSystem.CalculateFinalDefense(CurrentPlayer);
+        CalculateFinalStats(CurrentPlayer);
+    }
 
-        Debug.Log($"base attack = {CurrentPlayer.BaseAttack}");
-        Debug.Log($"base defense = {CurrentPlayer.BaseDefense}");
-        Debug.Log($"attack boost from {CurrentPlayer.EquippedWeapon.EquipmentName} = {CurrentPlayer.EquippedWeapon.AttackBoost}");
-        Debug.Log($"defense boost from {CurrentPlayer.EquippedArmor.EquipmentName} = {CurrentPlayer.EquippedArmor.DefenseBoost}");
-        Debug.Log($"final calculated attack = {finalAttack}");
-        Debug.Log($"final calculated defense = {finalDefense}");
+    public void CalculateFinalStats(PlayerData player)
+    {
+        int finalAttack = EquipmentSystem.CalculateFinalAttack(player);
+        int finalDefense = EquipmentSystem.CalculateFinalDefense(player);
 
+        Debug.Log($"Base attack = {player.BaseAttack}");
+        Debug.Log($"Base defense = {player.BaseDefense}");
+        Debug.Log($"Attack boost from {player.EquippedWeapon.EquipmentName} = {player.EquippedWeapon.AttackBoost}");
+        Debug.Log($"Attack boost from {player.EquippedArmor.EquipmentName} = {player.EquippedArmor.AttackBoost}");
+        Debug.Log($"Defense boost from {player.EquippedArmor.EquipmentName} = {player.EquippedArmor.DefenseBoost}");
+        Debug.Log($"Defense boost from {player.EquippedWeapon.EquipmentName} = {player.EquippedWeapon.DefenseBoost}");
+        Debug.Log($"Final calculated attack = {finalAttack}");
+        Debug.Log($"Final calculated defense = {finalDefense}");
     }
 
     public void AddExp()
     {
-        Growth.GainExp(50);
+        Growth.GainExp(50, CurrentPlayer);
     }
 
     // Update is called once per frame
