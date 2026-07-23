@@ -29,7 +29,7 @@ public class BattleSystems
             Debug.Log($"{enemy.name} defeated!");
             //enemy destruction goes here
 
-            GameManager.myGameManager.Growth.GainExp(enemy.ExpReward, player);
+            GameManager.MyGameManager.growth.GainExp(enemy.ExpReward, player);
         }
     }
 

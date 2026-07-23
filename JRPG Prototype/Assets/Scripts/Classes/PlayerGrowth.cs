@@ -37,6 +37,6 @@ public class PlayerGrowth
         player.level += 1;
 
         Debug.Log($"{player.name} has leveled up to level {player.level}! Calculating new stats...");
-        GameManager.myGameManager.CalculateFinalStats(player);
+        GameManager.MyGameManager.CalculateFinalStats(player);
     }
 }

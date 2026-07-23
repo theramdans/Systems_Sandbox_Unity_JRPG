@@ -5,28 +5,28 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager myGameManager;
+    public static GameManager MyGameManager;
 
     [SerializeField] private PlayerData CurrentPlayer; //use List<Players> for multiple party members in the future
     [SerializeField] private List<EnemyData> enemies; //for now, use single enemy
 
     [SerializeField] private EquipmentSystems EquipmentSystem;
-    [SerializeField] public PlayerGrowth Growth;
+    [SerializeField] public PlayerGrowth growth;
 
     public Button expButton;
 
     private void Awake()
     {
-        if (myGameManager == null)
+        if (MyGameManager == null)
         {
-            myGameManager = this;
+            MyGameManager = this;
         }
 
         else
         {
             Destroy(gameObject);
         }
-        Debug.Log(myGameManager);
+        Debug.Log(MyGameManager);
 
         expButton.onClick.AddListener(AddExp);    
     }
@@ -45,9 +45,9 @@ public class GameManager : MonoBehaviour
         CurrentPlayer.BaseAttack = 5;
         CurrentPlayer.BaseDefense = 5;
 
-        Growth = new PlayerGrowth();
+        //Growth = new PlayerGrowth();
 
-        EquipmentData busterSword = new EquipmentData()
+        EquipmentData BusterSword = new EquipmentData()
         {
             EquipmentName = "Buster Sword",
             Type = EquipmentType.Weapon,
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
             DefenseBoost = 1,
         };
 
-        EquipmentData ironBangle = new EquipmentData()
+        EquipmentData IronBangle = new EquipmentData()
         {
             EquipmentName = "Iron Bangle",
             Type = EquipmentType.Armor,
@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour
             DefenseBoost = 10
         };
 
-        EquipmentSystem.EquipWeapon(CurrentPlayer, busterSword);
-        EquipmentSystem.EquipArmor(CurrentPlayer, ironBangle);
+        EquipmentSystem.EquipWeapon(CurrentPlayer, BusterSword);
+        EquipmentSystem.EquipArmor(CurrentPlayer, IronBangle);
 
         CalculateFinalStats(CurrentPlayer);
     }
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void AddExp()
     {
-        Growth.GainExp(50, CurrentPlayer);
+        growth.GainExp(50, CurrentPlayer);
     }
 
     // Update is called once per frame
