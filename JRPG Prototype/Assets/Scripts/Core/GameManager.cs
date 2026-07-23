@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<EnemyData> enemies; //for now, use single enemy
 
     [SerializeField] private EquipmentSystems EquipmentSystem;
-    [SerializeField] private PlayerGrowth Growth;
+    [SerializeField] public PlayerGrowth Growth;
 
     public Button expButton;
 
