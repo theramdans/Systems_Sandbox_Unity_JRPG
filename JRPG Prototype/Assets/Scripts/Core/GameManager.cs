@@ -71,8 +71,8 @@ public class GameManager : MonoBehaviour
 
     public void CalculateFinalStats(PlayerData player)
     {
-        int finalAttack = EquipmentSystem.CalculateFinalAttack(player);
-        int finalDefense = EquipmentSystem.CalculateFinalDefense(player);
+        int FinalAttack = EquipmentSystem.CalculateFinalAttack(player);
+        int FinalDefense = EquipmentSystem.CalculateFinalDefense(player);
 
         Debug.Log($"Base attack = {player.BaseAttack}");
         Debug.Log($"Base defense = {player.BaseDefense}");
@@ -80,8 +80,8 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Attack boost from {player.EquippedArmor.EquipmentName} = {player.EquippedArmor.AttackBoost}");
         Debug.Log($"Defense boost from {player.EquippedArmor.EquipmentName} = {player.EquippedArmor.DefenseBoost}");
         Debug.Log($"Defense boost from {player.EquippedWeapon.EquipmentName} = {player.EquippedWeapon.DefenseBoost}");
-        Debug.Log($"Final calculated attack = {finalAttack}");
-        Debug.Log($"Final calculated defense = {finalDefense}");
+        Debug.Log($"Final calculated attack = {FinalAttack}");
+        Debug.Log($"Final calculated defense = {FinalDefense}");
     }
 
     public void AddExp()

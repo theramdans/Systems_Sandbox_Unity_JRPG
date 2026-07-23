@@ -25,13 +25,13 @@ public class PlayerGrowth
     {
         player.MaxHP = Mathf.RoundToInt(player.MaxHP * 1.1f);
 
-        int attackIncrease = Random.Range(1, 4); //randomize to add some RNG
-        int defenseIncrease = Random.Range(1, 4);
+        int AttackIncrease = Random.Range(1, 4); //randomize to add some RNG
+        int DefenseIncrease = Random.Range(1, 4);
 
-        player.BaseAttack += attackIncrease;
-        player.BaseDefense += defenseIncrease;
-        Debug.Log($"Attack increased by {attackIncrease}");
-        Debug.Log($"Defense increased by {defenseIncrease}");
+        player.BaseAttack += AttackIncrease;
+        player.BaseDefense += DefenseIncrease;
+        Debug.Log($"Attack increased by {AttackIncrease}");
+        Debug.Log($"Defense increased by {DefenseIncrease}");
 
         player.NextExp += 200 + Mathf.RoundToInt(player.level * 1.2f);
         player.level += 1;
